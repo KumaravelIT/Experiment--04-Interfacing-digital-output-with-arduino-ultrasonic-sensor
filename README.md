@@ -1,4 +1,8 @@
 # EXPERIMENT-NO--05-Distance measurement using Ultrasonic sensor
+# DATE :8/3/2024
+# NAME :KUMARAVEL R
+# ROLLNUMBER :212221220029
+# DEPARTMENT:INFORMATION TECHNOLOGY
 
 ## AIM: 
 To interface an ultrasonic pair and measure the distance in centimeters , calculate the error
@@ -55,32 +59,74 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 
 
 ### PROGRAM 
+```
+int echopin=6;
+int trigpin=7;
+int red=8;
+int green=9;
+long duration;
+float distance;
+void setup()
+{
+  pinMode(echopin,INPUT);
+  pinMode(trigpin,OUTPUT);
+  pinMode(red,OUTPUT);
+  pinMode(green,OUTPUT);
+  Serial.begin(9600);
+}
+void loop()
+{
+  digitalWrite(trigpin,LOW);
+  delay(10);
+  digitalWrite(trigpin,HIGH);
+  delay(10);
+  digitalWrite(trigpin,LOW);
+  duration=pulseIn(echopin,HIGH);
+  distance=duration*0.034/2;
+  Serial.print("distance=");
+  Serial.print(distance);
+  Serial.println("cms");
+  if(distance<50)
+  {
+    digitalWrite(green,HIGH);
+    delay(500);
+    digitalWrite(green,LOW);
+    delay(500);
+  }
+  else{
+    digitalWrite(red,HIGH);
+    delay(500);
+    digitalWrite(red,LOW);
+    delay(500);
+  }
+}
+
+  
+```
+
+
+
+### FIG 1 Distance vs measurement table 
+<img width="328" alt="Screenshot 2024-03-08 160743" src="https://github.com/KumaravelIT/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/117756569/3adfafe6-75ed-485d-bb52-0d01359395b3">
+
+
+### OUTPUT
+### FIG 2 CIRCUIT DIAGRAM
+<img width="949" alt="Screenshot 2024-03-08 160340" src="https://github.com/KumaravelIT/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/117756569/a6745e11-68fb-4fb1-bb5c-fbfc96b1d132">
+
+### FIG 3 DISTANCE LESS THAN 50
+
+<img width="464" alt="Screenshot 2024-03-08 160403" src="https://github.com/KumaravelIT/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/117756569/7aeb992d-0d86-467d-8b50-790b55829825">
 
 
 
 
+### FIG 4 DISTANCE GREATER THAN 50
+<img width="449" alt="Screenshot 2024-03-08 160235" src="https://github.com/KumaravelIT/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/117756569/adc88f09-a5d5-4dab-83fd-cb6826798305">
 
 
-### Distance vs measurement table 
-
-			
- 
-			
-			
-			
-
-![image](https://user-images.githubusercontent.com/36288975/190135379-52ebacd5-ccd5-460f-a4cd-4d0ad1d9b179.png)
-
-			
-			
-			
-			
-			
-			Average error = sum/ number of readings 
- 
-
-
-
+### FIG 5 GRAPH DISTANCE VS MEASUREMENT COMPARISON FOR ULTRASONIC SENSOR
+<img width="371" alt="Screenshot 2024-03-08 155956" src="https://github.com/KumaravelIT/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/117756569/2adb8336-bc17-47e1-9418-a5b74b5053fe">
 
 
 
@@ -88,6 +134,6 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 
 ### RESULTS
 
-
+Thus the program for the distance measurement using Ultrasonic sensor is been implemented successfully.
 
  
